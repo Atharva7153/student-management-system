@@ -4,7 +4,7 @@ A full-featured student management system built with Node.js, Express, and Mongo
 
 ## Link 
 
-- coming soon
+- https://student-management-system-3eck.onrender.com
 
 ## Features
 
