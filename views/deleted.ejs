@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Deleted</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .delete-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .delete-message {
+            color: #dc3545;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 3.5rem;
+            animation: pulse 2s infinite, colorChange 3s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes colorChange {
+            0% { color: #dc3545; }
+            33% { color: #0d6efd; }
+            66% { color: #28a745; }
+            100% { color: #dc3545; }
+        }
+        .home-button {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            animation: buttonGlow 3s infinite;
+        }
+        .home-button:hover {
+            background-color: #0b5ed7;
+            color: white;
+        }
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 5px #0d6efd; }
+            50% { box-shadow: 0 0 20px #0d6efd; }
+            100% { box-shadow: 0 0 5px #0d6efd; }
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, #ff7eb3, #ff758c, #ff6a65, #ff7eb3);
+            background-size: 800% 800%;
+            animation: gradientAnimation 10s ease infinite;
+            z-index: -1;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <div class="delete-container">
+        <h1 class="delete-message">!--Student Has Been Deleted--!</h1>
+        <a href="/" class="home-button">Back to Home Page</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

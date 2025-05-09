@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .form-check-input:checked {
+            background-color: #dc3545; /* Bootstrap's red color */
+            border-color: #dc3545;
+        }
+
+        /* Add fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Add hover effect for the submit button */
+        .btn-primary:hover {
+            background-color: #0056b3 !important; /* Darker blue */
+            transform: scale(1.05);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Add continuous background animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: backgroundAnimation 15s ease infinite;
+        }
+
+        /* Update gradient colors for the heading */
+        .fancy-heading {
+            font-family: 'Poppins', sans-serif; /* Use a modern font */
+            font-weight: bold;
+            background: linear-gradient(90deg, #6a11cb, #2575fc); /* Subtle purple to blue gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: backgroundAnimation 5s ease infinite;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center min-vh-100 align-items-center">
+            <div class="col-12 col-md-8 col-lg-6 fade-in">
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        <h2 class="text-center mb-5 display-5 fade-in fancy-heading">
+                            <i class="bi bi-person-circle me-2"></i>Sign Up
+                        </h2>
+                        <form action="/signup" method="post" class="fade-in">
+                            <div class="mb-4">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-primary text-white"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" name="userName" placeholder="Enter your Name" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-primary text-white"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" name="email" placeholder="Enter your Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-primary text-white"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" name="password" placeholder="Enter your Password" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="mb-3 text-secondary">Select Type of Role</h5>
+                                <div class="d-flex gap-4">
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="role" value="student" id="studentRadio" required>
+                                        <label class="form-check-label fw-bold text-primary" for="studentRadio">
+                                            <i class="bi bi-mortarboard"></i> Student
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="role" value="teacher" id="teacherRadio">
+                                        <label class="form-check-label fw-bold text-primary" for="teacherRadio">
+                                            <i class="bi bi-briefcase"></i> Teacher
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 fade-in">
+                                <i class="bi bi-person-plus me-2"></i>Sign Up
+                            </button>
+                            <div class="text-center mt-3 fade-in">
+                                <a href="/login" class="text-decoration-none"><i class="bi bi-arrow-left-circle me-2"></i>Back to Login</a>
+                            </div>
+
+                            <% if (errorMessages.length > 0) { %>
+                                <ul class="mt-4 p-3 bg-light border border-danger rounded fade-in">
+                                    <% errorMessages.forEach(msg => { %>
+                                        <li class="text-danger fw-bold"><i class="bi bi-exclamation-circle me-2"></i><%= msg.msg %></li>
+                                    <% }) %>
+                                </ul>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
