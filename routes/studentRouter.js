@@ -15,6 +15,8 @@ router.post("/edit-student/:_id", upload.single("photo"), StudentController.edit
 router.get('/download/csv/:_id', StudentController.downloadFile)
 router.get('/download/pdf/:_id', StudentController.downloadFilePdf)
 router.get('/download/:filename', StudentController.downloadPhoto)
+router.post('/add-topper/:_id', StudentController.addTopper)
+router.get('/toppers', StudentController.getTopper)
 
 
 

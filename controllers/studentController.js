@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Student = require("../models/studentModel")
+const Topper = require("../models/topperModel")
 const {format} = require('@fast-csv/format')
 const PdfDocument = require('pdfkit')
 const fs = require('fs')
@@ -190,4 +191,36 @@ exports.downloadPhoto = (req, res) =>{
             res.status(500).send("Error downloading file")
         }
     })
+}
+
+
+exports.addTopper = async (req, res) =>{
+    try{
+        const id = req.params._id
+        const student = await Student.findById(id)
+
+        if(!student){ 
+            return res.status(404).send("Student not found")
+        }
+        
+        const topper = new Topper({ student : id})
+        await topper.save()
+        res.redirect('/toppers')
+
+    } catch {
+        res.status(500).send("Error adding topper")
+    }
+
+    console.log("Topper Added")
+
+}
+
+exports.getTopper = async (req, res) => {
+    try {
+        const toppers = await Topper.find().populate('student')
+        res.render('toppers', { toppers })
+    } catch (err) {
+        console.error(err)
+        res.status(500).send("Error fetching toppers")
+    }
 }

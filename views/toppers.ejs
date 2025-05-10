@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toppers List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: backgroundAnimation 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .topper-card {
+            transition: transform 0.3s ease;
+        }
+        .topper-card:hover {
+            transform: translateY(-5px);
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-slide {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes gradientText {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-heading {
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #a06cd5);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 6s ease infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .gradient-heading:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-5 display-4 gradient-heading">
+            <i class="bi bi-trophy-fill text-warning me-2"></i>
+            Student Achievers
+        </h1>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <% toppers.forEach((topper, index) => { %>
+                <div class="col animate-slide" style="animation-delay:  index * 0.1 s">
+                    <div class="card h-100 shadow-sm topper-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-mortarboard-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="card-title mb-0"><%= topper.student.userName %></h5>
+                                    <small class="text-muted">
+                                        <i class="bi bi-book me-1"></i>
+                                        <%= topper.student.course %>
+                                    </small>
+                                </div>
+                            </div>
+                            <span class="badge bg-success">
+                                <i class="bi bi-star-fill me-1"></i>Top Performer
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="/" class="btn btn-outline-primary">
+                <i class="bi bi-house-door me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
